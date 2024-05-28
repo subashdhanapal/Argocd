@@ -1,35 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-deployment
+  name: your-app-deployment
   namespace: argocd1
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: example
+      app: your-app
   template:
     metadata:
       labels:
-        app: example
+        app: your-app
     spec:
       containers:
-      - name: example-container
-        image: your-image:tag
+      - name: your-app-container
+        image: your-app-image:tag
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 
-------------
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: example-service
+  name: your-app-service
   namespace: argocd1
 spec:
   selector:
-    app: example
+    app: your-app
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 80
+
 
