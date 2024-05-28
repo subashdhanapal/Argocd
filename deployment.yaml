@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: your-app-deployment
+  name: pods
   namespace: argocd1
 spec:
   replicas: 3
@@ -14,7 +14,7 @@ spec:
         app: your-app
     spec:
       containers:
-      - name: your-app-container
+      - name: mainproj
         image: your-app-image:tag
         ports:
         - containerPort: 80
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: your-app-service
+  name: pods
   namespace: argocd1
 spec:
   selector:
